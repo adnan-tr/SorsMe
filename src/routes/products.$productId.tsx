@@ -1,0 +1,8 @@
+import { createFileRoute, Link, notFound } from '@tanstack/react-router';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { products, categories, pageHead } from '@/lib/sorsme';
+import { Eyebrow, RequestBand } from '@/components/sorsme';
+import { SiteImage } from '@/components/site-image';
+export const Route = createFileRoute('/products/$productId')({loader:({params})=>{const product=products.find(p=>p.id===params.productId);if(!product)throw notFound();return product;},head:({loaderData})=>pageHead(loaderData?.name??'Product Unavailable',loaderData?.description??'Explore Turkish product sourcing opportunities with SorsMe.'),component:ProductDetail});
+function ProductDetail(){const p=Route.useLoaderData();return <><section className="section detail-layout"><SiteImage slotId={`product-${p.id}`} alt={p.name}/><div><Link className="back-link" to="/products"><ArrowLeft size={15}/>All Products</Link><div className="mt-6"><Eyebrow>{categories.find(c=>c.id===p.category)?.name}</Eyebrow></div><h1>{p.name}</h1><p>{p.description}</p><dl><div><dt>Material</dt><dd>{p.material}</dd></div><div><dt>Product type</dt><dd>{p.type}</dd></div><div><dt>Application</dt><dd>{p.application}</dd></div><div><dt>Price & minimum order</dt><dd>Confirmed through quotation</dd></div></dl><div className="notice">This is an illustrative product example. Supplier identity, exact specifications, availability and pricing will be confirmed for your request.</div><p>Need a specific finish, quantity or specification? Include your requirements in a sourcing request.</p><Button asChild><Link to="/request" search={{product:p.name}}>Request This Product<ArrowRight/></Link></Button></div></section><RequestBand/></>}

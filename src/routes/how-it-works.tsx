@@ -1,0 +1,5 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { PageHero, Process, Services, RequestBand } from '@/components/sorsme';
+import { pageHead } from '@/lib/sorsme';
+export const Route=createFileRoute('/how-it-works')({head:()=>pageHead('How Sourcing Works','From your product requirements to supplier discovery, comparative quotations and order coordination. Explore the SorsMe sourcing process.'),component:HowItWorks});
+function HowItWorks(){return <><PageHero eyebrow="How It Works" title="A Clear Path from Request to Supplier." description="Tell us what you need. We help you explore suitable suppliers, compare quotations and move forward with your sourcing project."/><Process full/><Services/><section className="section"><div className="notice">You pay SorsMe only for sourcing service fees. Product orders and payments are made directly with your chosen supplier. Inspection and shipping follow-up are optional services, agreed for your project.</div></section><RequestBand/></>}

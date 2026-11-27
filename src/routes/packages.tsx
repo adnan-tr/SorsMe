@@ -1,0 +1,5 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { PageHero, Packages, RequestBand } from '@/components/sorsme';
+import { pageHead } from '@/lib/sorsme';
+export const Route=createFileRoute('/packages')({head:()=>pageHead('Sourcing Packages & Service Fees','Sourcing Database $15/month. Standard quotation $20 for up to 50 products. Large quotation $45 for 51–200 products.'),component:PackagePage});
+function PackagePage(){return <><PageHero eyebrow="Sourcing Packages" title="The Right Support for Your Sourcing Needs." description="From discovering products to requesting detailed quotations, choose a sourcing service that fits your business."/><Packages/><section className="section"><div className="notice">Database subscriptions and online payments are not available on this website yet. Contact info@sorsme.com to enquire about access or a sourcing service. No payment is collected here.</div></section><RequestBand/></>}

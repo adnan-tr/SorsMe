@@ -1,12 +1,3 @@
-import hero from '@/assets/hero.webp.asset.json';
-import horeca from '@/assets/horeca.webp.asset.json';
-import food from '@/assets/food.webp.asset.json';
-import furniture from '@/assets/furniture.webp.asset.json';
-import textiles from '@/assets/textiles.webp.asset.json';
-import packaging from '@/assets/packaging.webp.asset.json';
-import industrial from '@/assets/industrial.webp.asset.json';
-import construction from '@/assets/construction.webp.asset.json';
-import custom from '@/assets/custom.webp.asset.json';
 import { categories, products } from '@/lib/sorsme';
 
 export type ImageOverride = { src: string; zoom: number; x: number; y: number };
@@ -23,28 +14,38 @@ export type ImageSlot = {
   defaultY: number;
 };
 
+const heroSrc = '/assets/sorsme-hero.webp';
+const horecaSrc = '/assets/sorsme-horeca.webp';
+const foodSrc = '/assets/sorsme-food.webp';
+const furnitureSrc = '/assets/sorsme-furniture.webp';
+const textilesSrc = '/assets/sorsme-textiles.webp';
+const packagingSrc = '/assets/sorsme-packaging.webp';
+const industrialSrc = '/assets/sorsme-industrial.webp';
+const constructionSrc = '/assets/sorsme-construction.webp';
+const customSrc = '/assets/sorsme-custom.webp';
+
 const catImage: Record<string, string> = {
-  horeca: horeca.url,
-  food: food.url,
-  furniture: furniture.url,
-  textiles: textiles.url,
-  packaging: packaging.url,
-  industrial: industrial.url,
-  construction: construction.url,
-  custom: custom.url,
+  horeca: horecaSrc,
+  food: foodSrc,
+  furniture: furnitureSrc,
+  textiles: textilesSrc,
+  packaging: packagingSrc,
+  industrial: industrialSrc,
+  construction: constructionSrc,
+  custom: customSrc,
 };
 
 export const imageSlots: ImageSlot[] = [
-  { id: 'home-hero-main', label: 'Hero background photo', group: 'Home page', page: '/', width: 480, height: 400, defaultSrc: hero.url, defaultX: 8, defaultY: 50 },
-  { id: 'home-hero-tableware', label: 'Hero collage — tableware', group: 'Home page', page: '/', width: 360, height: 200, defaultSrc: horeca.url, defaultX: 50, defaultY: 65 },
-  { id: 'home-hero-furniture', label: 'Hero collage — furniture', group: 'Home page', page: '/', width: 260, height: 240, defaultSrc: furniture.url, defaultX: 50, defaultY: 50 },
-  { id: 'home-hero-restaurant', label: 'Hero collage — restaurant', group: 'Home page', page: '/', width: 340, height: 225, defaultSrc: hero.url, defaultX: 75, defaultY: 70 },
-  { id: 'home-hero-industrial', label: 'Hero collage — industrial', group: 'Home page', page: '/', width: 200, height: 170, defaultSrc: industrial.url, defaultX: 50, defaultY: 50 },
-  { id: 'home-hero-textiles', label: 'Hero collage — textiles', group: 'Home page', page: '/', width: 180, height: 175, defaultSrc: textiles.url, defaultX: 50, defaultY: 50 },
-  { id: 'home-benefits', label: '“Why SorsMe?” photo', group: 'Home page', page: '/', width: 400, height: 250, defaultSrc: hero.url, defaultX: 6, defaultY: 50 },
-  { id: 'page-hero', label: 'Page header banner', group: 'Shared sections', page: 'About, Categories, Packages…', width: 1280, height: 355, defaultSrc: hero.url, defaultX: 50, defaultY: 50 },
-  { id: 'horeca-showcase', label: 'Horeca page photo', group: 'Content pages', page: '/horeca', width: 800, height: 256, defaultSrc: horeca.url, defaultX: 50, defaultY: 50 },
-  { id: 'about-intro', label: 'About page photo', group: 'Content pages', page: '/about', width: 560, height: 275, defaultSrc: furniture.url, defaultX: 50, defaultY: 50 },
+  { id: 'home-hero-main', label: 'Hero background photo', group: 'Home page', page: '/', width: 480, height: 400, defaultSrc: heroSrc, defaultX: 8, defaultY: 50 },
+  { id: 'home-hero-tableware', label: 'Hero collage — tableware', group: 'Home page', page: '/', width: 360, height: 200, defaultSrc: horecaSrc, defaultX: 50, defaultY: 65 },
+  { id: 'home-hero-furniture', label: 'Hero collage — furniture', group: 'Home page', page: '/', width: 260, height: 240, defaultSrc: furnitureSrc, defaultX: 50, defaultY: 50 },
+  { id: 'home-hero-restaurant', label: 'Hero collage — restaurant', group: 'Home page', page: '/', width: 340, height: 225, defaultSrc: heroSrc, defaultX: 75, defaultY: 70 },
+  { id: 'home-hero-industrial', label: 'Hero collage — industrial', group: 'Home page', page: '/', width: 200, height: 170, defaultSrc: industrialSrc, defaultX: 50, defaultY: 50 },
+  { id: 'home-hero-textiles', label: 'Hero collage — textiles', group: 'Home page', page: '/', width: 180, height: 175, defaultSrc: textilesSrc, defaultX: 50, defaultY: 50 },
+  { id: 'home-benefits', label: '"Why SorsMe?" photo', group: 'Home page', page: '/', width: 400, height: 250, defaultSrc: heroSrc, defaultX: 6, defaultY: 50 },
+  { id: 'page-hero', label: 'Page header banner', group: 'Shared sections', page: 'About, Categories, Packages…', width: 1280, height: 355, defaultSrc: heroSrc, defaultX: 50, defaultY: 50 },
+  { id: 'horeca-showcase', label: 'Horeca page photo', group: 'Content pages', page: '/horeca', width: 800, height: 256, defaultSrc: horecaSrc, defaultX: 50, defaultY: 50 },
+  { id: 'about-intro', label: 'About page photo', group: 'Content pages', page: '/about', width: 560, height: 275, defaultSrc: furnitureSrc, defaultX: 50, defaultY: 50 },
   ...categories.map((c) => ({ id: `category-${c.id}`, label: `${c.name} tile`, group: 'Category tiles', page: '/', width: 300, height: 200, defaultSrc: catImage[c.id] ?? c.image, defaultX: 50, defaultY: 50 })),
   ...products.map((p) => ({ id: `product-${p.id}`, label: p.name, group: 'Product examples', page: '/products', width: 320, height: 246, defaultSrc: p.image, defaultX: 50, defaultY: 50 })),
 ];
